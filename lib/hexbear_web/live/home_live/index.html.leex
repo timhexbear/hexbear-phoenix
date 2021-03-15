@@ -1,0 +1,20 @@
+<section class="phx-hero">
+  <h1><%= gettext "Welcome to %{name}!", name: "Hexbear" %></h1>
+  <p>Home of slop and shitting in the woods</p>
+</section>
+
+<section>
+  <h5>Quick actions:</h5>
+  <ul>
+    <li><a href="/create_board">Create a board</a></li>
+    <li><a href="/boards">All boards</a></li>
+  </ul>
+</section>
+
+<section>
+  <h5>All Posts:</h5>
+
+  <%= for thread <- @threads do %>
+    <%= live_component @socket, HexbearWeb.Components.FeedThread, thread: thread %>
+  <% end %>
+</section>

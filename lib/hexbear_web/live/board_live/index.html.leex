@@ -1,0 +1,28 @@
+<h1>All Boards</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Title</th>
+      <th>Description</th>
+      <th>Threads closed</th>
+      <th>Comments closed</th>
+      <th>Is private</th>
+    </tr>
+  </thead>
+  <tbody id="boards">
+    <%= for board <- @boards do %>
+      <tr id="board-<%= board.id %>">
+        <td><%= live_redirect ~s"!#{board.name}", to: Routes.board_show_path(@socket, :show, board.name) %></td>
+        <td><%= board.title %></td>
+        <td><%= board.description %></td>
+        <td><%= board.threads_closed %></td>
+        <td><%= board.comments_closed %></td>
+        <td><%= board.is_private %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<span><%= live_patch "New Board", to: "/create_board" %></span>

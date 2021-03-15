@@ -1,0 +1,20 @@
+<div class="phx-hero">
+  <div class="row">
+    <span>
+      by
+      &#8288
+    </span>
+    <%= live_patch ~s"@#{@comment.creator.name}",
+      to: ~s"/u/#{@comment.creator.name}"
+    %>
+    <span>
+      &#8288
+      at
+      &#8288
+      <%= @comment.inserted_at %>
+    </span>
+  </div>
+  <div class="row">
+    <%= @comment.content %>
+  </div>
+</div>

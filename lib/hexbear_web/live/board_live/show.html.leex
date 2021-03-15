@@ -1,0 +1,34 @@
+<%= if @live_action in [:edit] do %>
+  <%= live_modal @socket, HexbearWeb.BoardLive.FormComponent,
+    id: @board.id,
+    title: @board.name,
+    action: @live_action,
+    board: @board,
+    return_to: Routes.board_show_path(@socket, :show, @board) %>
+<% end %>
+
+<h3><%= @board.title %></h3>
+<h5><%= gettext "!%{name}", name: @board.name %></h5>
+
+<section class="phx-hero">
+<%= @board.description %>
+</section>
+
+<%= if @board.is_private do %>
+  <section class="phx-hero">This board is private</section>
+<% else %>
+  <%= if @board.threads_closed do %>
+    <span>Thread creation closed</span>
+  <% else %>
+    <span><%= live_patch "New Thread", to: (gettext "/b/%{name}/create_thread", name: @board.name), class: "button" %></span>
+  <% end %>
+
+  <div class="row">
+  <div class="column">
+  <%= for thread <- @board.threads do %>
+    <%= live_component @socket, HexbearWeb.Components.FeedThread, thread: thread %>
+  <% end %>
+  </div>
+  </div>
+
+<% end %>

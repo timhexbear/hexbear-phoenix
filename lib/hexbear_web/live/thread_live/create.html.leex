@@ -1,0 +1,51 @@
+<h2><%= @page_title %></h2>
+
+<%= f = form_for @changeset, "#",
+  id: "thread-form",
+  phx_change: "validate",
+  phx_submit: "save" %>
+
+  <%= hidden_input f, :board_id, value: @board_id %>
+  <%= error_tag f, :board_id %>
+
+  <%= hidden_input f, :creator_id, value: @creator_id %>
+  <%= error_tag f, :creator_id %>
+
+  <%= label f, :title %>
+  <%= text_input f, :title %>
+  <%= error_tag f, :title %>
+
+  <%= label f, :body %>
+  <%= text_input f, :body %>
+  <%= error_tag f, :body %>
+
+  <%= label f, :url %>
+  <%= text_input f, :url %>
+  <%= error_tag f, :url %>
+
+  <%= label f, :thumbnail %>
+  <%= text_input f, :thumbnail %>
+  <%= error_tag f, :thumbnail %>
+
+  <%= label f, :is_locked %>
+  <%= checkbox f, :is_locked %>
+  <%= error_tag f, :is_locked %>
+
+  <%= label f, :is_unlisted %>
+  <%= checkbox f, :is_unlisted %>
+  <%= error_tag f, :is_unlisted %>
+
+  <%= label f, :is_private %>
+  <%= checkbox f, :is_private %>
+  <%= error_tag f, :is_private %>
+
+  <%= label f, :is_stickied %>
+  <%= checkbox f, :is_stickied %>
+  <%= error_tag f, :is_stickied %>
+
+  <%= label f, :is_featured %>
+  <%= checkbox f, :is_featured %>
+  <%= error_tag f, :is_featured %>
+
+  <%= submit "Save", phx_disable_with: "Saving..." %>
+</form>

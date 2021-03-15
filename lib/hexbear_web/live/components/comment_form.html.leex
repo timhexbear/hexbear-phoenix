@@ -1,0 +1,17 @@
+<%= f = form_for @changeset, "#",
+  id: "comment-form",
+  phx_change: "validate",
+  phx_target: @myself,
+  phx_submit: "save" %>
+
+  <%= hidden_input f, :thread_id, value: @id %>
+  <%= error_tag f, :thread_id %>
+
+  <%= hidden_input f, :creator_id, value: @user_id %>
+  <%= error_tag f, :creator_id %>
+
+  <%= text_input f, :content %>
+  <%= error_tag f, :content %>
+
+  <%= submit "Submit", phx_disable_with: "Submitting..." %>
+</form>

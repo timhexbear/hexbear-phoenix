@@ -1,0 +1,30 @@
+<%= if @live_action in [:edit] do %>
+  <%= live_modal @socket, HexbearWeb.ThreadLive.FormComponent,
+    id: @thread.id,
+    title: @page_title,
+    action: @live_action,
+    thread: @thread,
+    return_to: Routes.thread_show_path(@socket, :show, @thread) %>
+<% end %>
+
+<%= live_component @socket,
+  HexbearWeb.Components.FeedThread,
+  thread: @thread
+%>
+
+<h3>Comments</h3>
+
+<%= live_component @socket,
+  HexbearWeb.Components.CommentForm,
+  id: @thread.id,
+  user_id: @current_user_id,
+  parent: nil,
+  comment: %Local.Comment{}
+%>
+
+<%= for comment <- @comments do %>
+  <%= live_component @socket,
+    HexbearWeb.Components.FeedComment,
+    comment: comment
+  %>
+<% end %>

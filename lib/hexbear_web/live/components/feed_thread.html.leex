@@ -1,0 +1,46 @@
+<div class="row phx-hero">
+
+  <div class="column column-20">
+    <%= if @thread.thumbnail !== nil do %>
+      <img src=<%=@thread.thumbnail %> />
+    <% end %>
+  </div>
+
+  <div class="column">
+    <div class="row">
+      <strong>
+        <%= live_patch @thread.title, to: ~s"/thread/#{@thread.id}" %>
+      </strong>
+    </div>
+
+    <div class="row">
+      <span>
+        to
+        &#8288 <!-- non-breaking space -->
+      </span>
+      <%= live_patch ~s"!#{@thread.board.name}",
+        to: ~s"/b/#{@thread.board.name}"
+      %>
+      <span>
+        &#8288
+        by
+        &#8288
+      </span>
+      <%= live_patch ~s"@#{@thread.creator.name}",
+        to: ~s"/thread/#{@thread.id}"
+      %>
+      <span>
+        &#8288
+        at
+        &#8288
+        <%= @thread.inserted_at %>
+      </span>
+    </div>
+
+    <br />
+
+    <div class="row">
+      <%= @thread.body %>
+    </div>
+  </div>
+</div>
