@@ -17,4 +17,26 @@
   <div class="row">
     <%= @comment.content %>
   </div>
+  <div class="row">
+    <div class="column">
+      <%= live_component @socket,
+        HexbearWeb.Components.Icons.Like,
+        liked: true
+      %>
+      19.17k
+    </div>
+
+    <div class="column">
+      <%= live_component @socket,
+        HexbearWeb.Components.Icons.Share
+      %>
+    </div>
+
+    <div class="column">
+      <%= live_component @socket,
+        HexbearWeb.Components.Icons.More
+      %>
+    </div>
+
+  </div>
 </div>
