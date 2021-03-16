@@ -1,6 +1,6 @@
 <div class="user-menu">
 <%= if @current_user do %>
-  <div><%= @current_user.name %></div>
+  <div><a href=<%= ~s"/u/#{@current_user.name}" %>><%= ~s"@#{@current_user.name}" %></a></div>
   <div><%= link "Settings", to: Routes.user_settings_path(@conn, :edit) %></div>
   <div><%= link "Log out", to: Routes.user_session_path(@conn, :delete), method: :delete %></div>
 <% else %>
