@@ -8,6 +8,7 @@ Prerequisites:
 
 To start your Phoenix server:
 
+  * Create a postgres user named `hexbear` with password `hexbear` or change the dev credentials in `./config/dev.exs`
   * Install dependencies with `mix deps.get`
   * Create and migrate your database with `mix ecto.setup`
   * Install Node.js dependencies with `npm install` inside the `assets` directory
