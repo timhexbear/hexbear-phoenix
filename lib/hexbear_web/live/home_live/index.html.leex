@@ -12,7 +12,7 @@
 </section>
 
 <section>
-  <h5>All Posts:</h5>
+  <h5>All Threads:</h5>
 
   <%= for thread <- @threads do %>
     <%= live_component @socket, HexbearWeb.Components.FeedThread, thread: thread %>
